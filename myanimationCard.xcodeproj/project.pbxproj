@@ -14,6 +14,7 @@
 		5B2681DF210D0CE10099DC91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2681DD210D0CE10099DC91 /* LaunchScreen.storyboard */; };
 		5B2681EA210D0CE10099DC91 /* myanimationCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2681E9210D0CE10099DC91 /* myanimationCardTests.swift */; };
 		5B2681F5210D0CE10099DC91 /* myanimationCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2681F4210D0CE10099DC91 /* myanimationCardUITests.swift */; };
+		5B268203210D13B20099DC91 /* myanimationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B268202210D13B20099DC91 /* myanimationCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		5B2681F0210D0CE10099DC91 /* myanimationCardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myanimationCardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2681F4210D0CE10099DC91 /* myanimationCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myanimationCardUITests.swift; sourceTree = "<group>"; };
 		5B2681F6210D0CE10099DC91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B268202210D13B20099DC91 /* myanimationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myanimationCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				5B2681DB210D0CE10099DC91 /* Assets.xcassets */,
 				5B2681DD210D0CE10099DC91 /* LaunchScreen.storyboard */,
 				5B2681E0210D0CE10099DC91 /* Info.plist */,
+				5B268202210D13B20099DC91 /* myanimationCard.swift */,
 			);
 			path = myanimationCard;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				5B2681D7210D0CE00099DC91 /* ViewController.swift in Sources */,
 				5B2681D5210D0CE00099DC91 /* AppDelegate.swift in Sources */,
+				5B268203210D13B20099DC91 /* myanimationCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ZTA5QN97Z;
+				DEVELOPMENT_TEAM = 4SREC8ZH83;
 				INFOPLIST_FILE = myanimationCard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,7 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ZTA5QN97Z;
+				DEVELOPMENT_TEAM = 4SREC8ZH83;
 				INFOPLIST_FILE = myanimationCard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -8,18 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,myInfoSlideDelegate {
+
+    
+    let myanimationCardVC       = myanimationCard()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        myanimationCardVC.delegate  = self
+        myanimationCardVC.yourView  = self.view
+        myanimationCardVC.show()
+     
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func handlerAction(sender: UITapGestureRecognizer) {
+        print("run")
     }
-
 
 }
 
