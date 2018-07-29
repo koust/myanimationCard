@@ -19,10 +19,16 @@ open class myanimationCard: UIViewController {
     
     public var yourView                 = UIView()
     public var cornerRadius:CGFloat     = 10
+    public var myTitle                  = "Title"
+    public var myDesc                   = "While working on a project making multiple API calls and parsing text from the API response I ran into a problem with the unpredictable amount of text i was receiving. Some of the text easily fit in 2–3 lines and other text required 6–7 lines or more to properly fit. "
+    public var myViewHeight:CGFloat     = 80
+    public var myViewBg                 = UIColor.black
+    public var myTitleColor             = UIColor.white
+    public var myDescColor              = UIColor.white
 
     private var myView                  = UIView()
-    private var myViewHeight:CGFloat    = 80
-    private var myViewBg                = UIColor.black
+    private var contentTitle            = UILabel()
+    private var contentDesc             = UILabel()
     private var leftAnchor:NSLayoutConstraint?
     private var rightAnchor:NSLayoutConstraint?
     private var heightAnchor:NSLayoutConstraint?
@@ -66,6 +72,34 @@ open class myanimationCard: UIViewController {
 
     }
     
+    private func createContent(){
+        contentTitle.translatesAutoresizingMaskIntoConstraints              = false
+        contentDesc.translatesAutoresizingMaskIntoConstraints               = false
+        
+        contentTitle.text               = myTitle
+        contentTitle.textColor          = myTitleColor
+        contentDesc.text                = myDesc
+        contentDesc.textColor           = myDescColor
+        contentDesc.numberOfLines       = 0
+        contentDesc.lineBreakMode       = .byWordWrapping
+        contentDesc.textAlignment       = .justified
+        
+        
+        
+        myView.addSubview(contentTitle)
+        myView.addSubview(contentDesc)
+        
+        contentTitle.topAnchor.constraint(equalTo: myView.topAnchor, constant: 15).isActive         = true
+        contentTitle.leftAnchor.constraint(equalTo: myView.leftAnchor, constant: 15).isActive       = true
+        contentTitle.rightAnchor.constraint(equalTo: myView.rightAnchor, constant: -15).isActive    = true
+        
+        contentDesc.topAnchor.constraint(equalTo: contentTitle.bottomAnchor, constant: 15).isActive = true
+        contentDesc.leftAnchor.constraint(equalTo: myView.leftAnchor, constant: 15).isActive        = true
+        contentDesc.rightAnchor.constraint(equalTo: myView.rightAnchor, constant: -15).isActive     = true
+        contentDesc.bottomAnchor.constraint(equalTo: myView.bottomAnchor, constant: -25).isActive   = true
+        
+    }
+    
     private func swipe(){
         let directions: [UISwipeGestureRecognizerDirection] = [.right, .left, .up, .down]
         for direction in directions {
@@ -99,15 +133,16 @@ open class myanimationCard: UIViewController {
 
     
     private func animationUp(){
-        UIView.animate(withDuration: 1, delay: 0, options: [],
+        UIView.animate(withDuration: 0.6, delay: 0, options: [],
                 animations: {
-                    self.heightAnchor?.isActive     = false
+                    self.heightAnchor?.isActive     = true
                     self.rightAnchor?.constant      = 0
                     self.leftAnchor?.constant       = 0
-                    self.topAnchor = self.myView.topAnchor.constraint(equalTo: self.yourView.topAnchor, constant: 180)
-                    self.topAnchor?.isActive        = true
+//                    self.topAnchor = self.myView.topAnchor.constraint(equalTo: self.yourView.topAnchor, constant: 180)
+//                    self.topAnchor?.isActive        = true
                     self.isOpen                     = 1
                     self.myView.layer.cornerRadius  = 0
+                    self.createContent()
                     self.yourView.layoutIfNeeded()
                 },
                 completion: nil
@@ -117,7 +152,7 @@ open class myanimationCard: UIViewController {
     
     
     private func animationDown(){
-        UIView.animate(withDuration: 1, delay: 0, options: [],
+        UIView.animate(withDuration: 0.6, delay: 0, options: [],
                        animations: {
                         self.heightAnchor?.isActive     = false
                         self.rightAnchor?.constant      = -10
@@ -126,11 +161,16 @@ open class myanimationCard: UIViewController {
                         self.topAnchor?.isActive        = false
                         self.isOpen                     = 0
                         self.myView.layer.cornerRadius  = self.cornerRadius
+                        self.contentTitle.removeFromSuperview()
+                        self.contentDesc.removeFromSuperview()
                         self.yourView.layoutIfNeeded()
         },
                        completion: nil
         )
     }
+    
+    
+    
 
 }
 
