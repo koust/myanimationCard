@@ -47,7 +47,7 @@ open class myanimationCard: UIViewController {
 
         
         
-        myView.translatesAutoresizingMaskIntoConstraints                                      = false
+        myView.translatesAutoresizingMaskIntoConstraints = false
         
         yourView.addSubview(myView)
         
@@ -78,7 +78,9 @@ open class myanimationCard: UIViewController {
     @objc  private func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         
         if gesture.direction == .up {
+            if isOpen == 0 {
             animationUp()
+            }
         }else if gesture.direction == .down {
             if isOpen == 1 {
             animationDown()
@@ -97,7 +99,7 @@ open class myanimationCard: UIViewController {
 
     
     private func animationUp(){
-        UIView.animate(withDuration: 0.5, delay: 0, options: [],
+        UIView.animate(withDuration: 1, delay: 0, options: [],
                 animations: {
                     self.heightAnchor?.isActive     = false
                     self.rightAnchor?.constant      = 0
@@ -106,7 +108,7 @@ open class myanimationCard: UIViewController {
                     self.topAnchor?.isActive        = true
                     self.isOpen                     = 1
                     self.myView.layer.cornerRadius  = 0
-                    
+                    self.yourView.layoutIfNeeded()
                 },
                 completion: nil
         )
@@ -115,7 +117,7 @@ open class myanimationCard: UIViewController {
     
     
     private func animationDown(){
-        UIView.animate(withDuration: 0.5, delay: 0, options: [],
+        UIView.animate(withDuration: 1, delay: 0, options: [],
                        animations: {
                         self.heightAnchor?.isActive     = false
                         self.rightAnchor?.constant      = -10
@@ -124,6 +126,7 @@ open class myanimationCard: UIViewController {
                         self.topAnchor?.isActive        = false
                         self.isOpen                     = 0
                         self.myView.layer.cornerRadius  = self.cornerRadius
+                        self.yourView.layoutIfNeeded()
         },
                        completion: nil
         )
