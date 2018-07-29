@@ -18,6 +18,7 @@ open class myanimationCard: UIViewController {
     public var delegate:myInfoSlideDelegate?
     
     public var yourView                 = UIView()
+    public var cornerRadius:CGFloat     = 10
 
     private var myView                  = UIView()
     private var myViewHeight:CGFloat    = 80
@@ -39,7 +40,7 @@ open class myanimationCard: UIViewController {
     private func createView(){
         myView.backgroundColor          = myViewBg
         myView.clipsToBounds            = true
-        myView.layer.cornerRadius       = 10
+        myView.layer.cornerRadius       = cornerRadius
         myView.layer.maskedCorners      = [.layerMaxXMinYCorner,.layerMinXMinYCorner]
         
         
@@ -60,7 +61,8 @@ open class myanimationCard: UIViewController {
         heightAnchor = myView.heightAnchor.constraint(greaterThanOrEqualToConstant: myViewHeight)
         heightAnchor?.isActive   = true
 
-        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handlerAction))
+        myView.addGestureRecognizer(gesture)
 
     }
     
@@ -86,22 +88,16 @@ open class myanimationCard: UIViewController {
     }
     
     @objc private func handlerAction(sender:UITapGestureRecognizer){
-        print("batux")
         delegate?.handlerAction(sender: sender)
-        
-//        if gesture.direction == .left {
-//
-//
-//        }else if gesture.direction == .right {
-//
-//        }
-        
+        if isOpen != 1 {
+            animationUp()
+        }
     }
 
 
     
     private func animationUp(){
-        UIView.animate(withDuration: 1, delay: 0, options: [],
+        UIView.animate(withDuration: 0.5, delay: 0, options: [],
                 animations: {
                     self.heightAnchor?.isActive     = false
                     self.rightAnchor?.constant      = 0
@@ -109,6 +105,7 @@ open class myanimationCard: UIViewController {
                     self.topAnchor = self.myView.topAnchor.constraint(equalTo: self.yourView.topAnchor, constant: 180)
                     self.topAnchor?.isActive        = true
                     self.isOpen                     = 1
+                    self.myView.layer.cornerRadius  = 0
                     
                 },
                 completion: nil
@@ -118,7 +115,7 @@ open class myanimationCard: UIViewController {
     
     
     private func animationDown(){
-        UIView.animate(withDuration: 1, delay: 0, options: [],
+        UIView.animate(withDuration: 0.5, delay: 0, options: [],
                        animations: {
                         self.heightAnchor?.isActive     = false
                         self.rightAnchor?.constant      = -10
@@ -126,6 +123,7 @@ open class myanimationCard: UIViewController {
                         self.heightAnchor?.isActive     = true
                         self.topAnchor?.isActive        = false
                         self.isOpen                     = 0
+                        self.myView.layer.cornerRadius  = self.cornerRadius
         },
                        completion: nil
         )

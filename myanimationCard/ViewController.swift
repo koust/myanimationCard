@@ -23,7 +23,7 @@ class ViewController: UIViewController,myInfoSlideDelegate {
     }
 
     func handlerAction(sender: UITapGestureRecognizer) {
-        print("run")
+    
     }
 
 }
